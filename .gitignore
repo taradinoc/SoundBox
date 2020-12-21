@@ -1,0 +1,6 @@
+build
+node_modules
+.git
+config.json
+lavalink.jar
+logs

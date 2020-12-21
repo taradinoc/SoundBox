@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "module": "commonjs",
+        "declaration": true /* Generates corresponding 'd.ts' file */,
+        "declarationMap": true /* Generates a sourcemap for each corresponding '.d.ts' file. */,
+        "outDir": "./build" /* Redirect output structure to the directory. */,
+        "strict": true /* Enable all strict type-checking options. */,
+        "resolveJsonModule": true /* This is used for allowing .json files. */,
+        "esModuleInterop": true
+    },
+    "include": [
+        "src"
+    ],
+    "exclude": [
+        "node_modules",
+        "build"
+    ]
+}
