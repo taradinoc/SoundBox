@@ -25,7 +25,7 @@ const guildCreate: Function = (bot: any) => {
             let channel = guild.channels.cache.get(guild.systemChannelID || channelID);
             const embed = new MessageEmbed();
             embed.setTitle('SoundBox')
-            embed.setDescription('Thanks for using SoundBox Music! To get started, join a voice channel and type `!play <song name>`. If you with to change your prefix please type `!prefix <prefix>!`')
+            embed.setDescription('Thanks for using SoundBox Music! To get started, join a voice channel and type `!play <song name>`. If you with to change your prefix please type `!prefix <prefix>!` To see all commands run `!help`')
             embed.setFooter('♪♪');
             channel.send(embed);
         } catch (err) {
