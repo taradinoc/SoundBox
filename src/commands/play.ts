@@ -1,10 +1,18 @@
+//General imports
+import { Manager } from 'erela.js';
+
 //Local imports
 import Guild from '../database/models/guild.model';
 import Logger from '../logger';
 
 const logger = new Logger();
 
-const Play: Function = (bot: any) => {
+interface Client {
+    on: Function,
+    manager: Manager
+};
+
+const Play: Function = (bot: Client) => {
     bot.on('message', async (message: any) => {
         try {
             const guild: any = await Guild.findOne({
