@@ -3,4 +3,15 @@
 # Sound Box
 [![Download](https://img.shields.io/badge/Download-1.0.0-blue)](https://github.com/Toadless/SoundBox/releases/tag/1.0.3)
 
-This repo is not maintained and is not ready for self hosting. Sound Box is still being actively developed in private by me.
+Sound box is a basic discord music bot.
+
+## Features
+* Powered by Lavalink
+* Custom prefix
+* No Lag
+* Configurable volume
+* High quality sound
+
+Add me (here)[https://discord.com/api/oauth2/authorize?client_id=790642084016291892&permissions=372763952&scope=bot].
+
+This isnt sutable for self hosting.

@@ -1,22 +1,29 @@
 //General imports
-import { Client } from 'discord.js';
+import Discord from 'discord.js';
 
 //Local imports
 import * as Config from '../config.json';
 import Logger from './logger';
-import Connect from './database/connect';
-import guildCreate from './events/guildCreate';
-import MusicManager from './manager';
-import Ready from './events/ready';
-import Raw from './events/raw';
-import Play from './commands/play';
-import Skip from './commands/skip';
-import Stop from './commands/stop';
-import Queue from './commands/queue';
-import Prefix from './commands/prefix';
+
+//All module imports - barrel
+import {
+    Connect,
+    guildCreate,
+    MusicManager,
+    Ready,
+    Raw,
+    Play,
+    Skip,
+    Stop,
+    Queue,
+    Prefix,
+    Help,
+    Activity,
+    Volume
+} from './barrel';
 
 //Constants
-const bot = new Client();
+const bot = new Discord.Client();
 const logger = new Logger();
 
 //Displaying banner
@@ -24,7 +31,8 @@ logger.banner('Sound Box')
 
 bot.on('ready', () => {
     logger.success('Logged into bot!')
-    Connect();
+    //Loading all modules
+    Connect(bot);
     guildCreate(bot);
     MusicManager(bot);
     Ready(bot);
@@ -34,6 +42,9 @@ bot.on('ready', () => {
     Stop(bot);
     Queue(bot);
     Prefix(bot);
+    Help(bot);
+    Activity(bot);
+    Volume(bot);
 })
 
 //Logging into the bot

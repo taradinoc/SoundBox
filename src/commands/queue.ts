@@ -4,26 +4,28 @@ import Discord from 'discord.js';
 //Local imports
 import Guild from '../database/models/guild.model';
 import Logger from '../logger';
+import Client from '../@types/Client.interface';
+import Message from '../@types/Message.interface';
+import GuildType from '../@types/Guild.interface';
 
 const logger = new Logger();
 
-const Queue = (bot: any) => {
-    bot.on('message', async (message: any) => {
+const Queue = (bot: Client) => {
+    bot.on('message', async (message: Message) => {
         try {
-            const guild: any = await Guild.findOne({
+            const guild: GuildType = await Guild.findOne({
                 id: message.guild.id,
-            })
+            }) as GuildType;
             const prefix: String = guild.prefix;
             if (message.content.startsWith(`${prefix}queue`)) {
                 if (!message.member.voice.channel) {
                     message.reply("You must be in a voice channel to do this.");
                     return;
                 }
-                const player = bot.manager.create({
-                    guild: message.guild.id,
-                    voiceChannel: message.member.voice.channel.id,
-                    textChannel: message.channel.id,
-                });
+                const player: any = bot.manager.players.get(message.guild.id);
+                if (!player) {
+                    return message.reply('Nothing playing at the moment.')
+                }
                 const queue = new Discord.MessageEmbed();
                 queue.setTitle('__**QUEUE**__')
                 queue.addField('\u200b', '**Now Playing**')
