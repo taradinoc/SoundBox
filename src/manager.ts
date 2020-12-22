@@ -5,10 +5,11 @@ import { MessageEmbed } from 'discord.js';
 //Local imports
 import Config from '../config.json';
 import Logger from './logger';
+import Client from './@types/Client.interface';
 
 const logger = new Logger();
 
-const MusicManager: Function = (bot: any) => {
+const MusicManager: Function = (bot: Client) => {
 
     bot.manager = new Manager({
         nodes: [

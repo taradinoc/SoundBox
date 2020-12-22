@@ -4,20 +4,18 @@ import { Manager } from 'erela.js';
 //Local imports
 import Guild from '../database/models/guild.model';
 import Logger from '../logger';
+import Client from '../@types/Client.interface';
+import Message from '../@types/Message.interface';
+import GuildType from '../@types/Guild.interface';
 
 const logger = new Logger();
 
-interface Client {
-    on: Function,
-    manager: Manager
-};
-
 const Play: Function = (bot: Client) => {
-    bot.on('message', async (message: any) => {
+    bot.on('message', async (message: Message) => {
         try {
-            const guild: any = await Guild.findOne({
+            const guild: GuildType = await Guild.findOne({
                 id: message.guild.id,
-            })
+            }) as GuildType;
             const prefix: String = guild.prefix;
             if (message.content.startsWith(`${prefix}play`)) {
                 let args = message.content.substring(prefix.length).split(' ');

@@ -4,10 +4,12 @@ import { MessageEmbed } from 'discord.js';
 //Local imports
 import Guild from '../database/models/guild.model';
 import Logger from '../logger';
+import Client from '../@types/Client.interface';
+import GuildType from '../@types/Guild.interface';
 
 const logger = new Logger();
 
-const guildCreate: Function = (bot: any) => {
+const guildCreate: Function = (bot: Client) => {
     bot.on('guildCreate', (guild: any) => {
         try {
             let channelID;
@@ -32,10 +34,10 @@ const guildCreate: Function = (bot: any) => {
             logger.warn('Failed to send the welcome message')
         } finally {
             try {
-                const newGuild: any = new Guild({
+                const newGuild: GuildType = new Guild({
                     id: guild.id,
                     prefix: '!'
-                });
+                }) as GuildType;
                 newGuild.save();
             } catch (err) {
                 logger.error('Failed to create a new database value for a guild.')
