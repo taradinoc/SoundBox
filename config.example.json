@@ -1,0 +1,12 @@
+{
+    "bot": {
+        "default_prefix": "!",
+        "token": "TOKEN",
+        "mongodb": "MONGO_DB_URI"
+    },
+    "lavalink": {
+        "port": 2333,
+        "address": "localhost",
+        "pass": "youshallnotpass"
+    }
+}
